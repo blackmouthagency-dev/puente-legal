@@ -1,0 +1,4 @@
+# Prototipo: bloquea rastreo. En producción cambiar a "Allow: /" y dejar el Sitemap.
+User-agent: *
+Disallow: /
+Sitemap: https://puentelegal.com.co/sitemap.xml
