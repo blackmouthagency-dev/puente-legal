@@ -1392,3 +1392,10 @@ form.lead { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; background
 .ted-img, .prof-photo { background: none; border-radius: 0; }
 .ted-img img, .prof-photo img { -webkit-mask-image: linear-gradient(to top, transparent 0, #000 24%); mask-image: linear-gradient(to top, transparent 0, #000 24%); }
 .prof-photo img { object-position: 50% 100%; }
+
+/* Hero: horizonte de oficinas detrás del puente (capa de tinta con transparencia, generada con IA) */
+.hx-city { position: absolute; left: -4%; top: -8.9%; width: 108%; pointer-events: none; opacity: .42; animation: cityIn 1.6s var(--ease-out-expo) .25s both; }
+.hx-city img { display: block; width: 100%; height: auto; }
+@keyframes cityIn { from { opacity: 0; transform: translateY(14px); } }
+.hx-lab { background: rgba(255,255,255,.84); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+@media (prefers-reduced-motion: reduce) { .hx-city { animation: none; } }
