@@ -104,6 +104,7 @@
     </a>
     <nav aria-label="Principal">
     <ul class="nav-links" id="menu">
+      <li><a href="../habilitacion-transporte-de-carga/" class="nav-star">Habilitación</a></li>
       <li><a href="../servicios/">Servicios</a></li>
       <li><a href="../diagnostico/">Diagnóstico</a></li>
       <li><a href="../nosotros/">Nosotros</a></li>
@@ -142,7 +143,8 @@
   <symbol id="i-mas" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
   <symbol id="i-camion" viewBox="0 0 24 24"><path d="M2.5 6h11v10h-11zM13.5 9.5H18l3.5 3.5V16h-8" pathLength="1"/><circle cx="6.5" cy="17.5" r="1.8" pathLength="1"/><circle cx="17.5" cy="17.5" r="1.8" pathLength="1"/></symbol>
   <symbol id="i-habilitacion" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7zM14 3v4h4" pathLength="1"/><circle cx="12" cy="13.5" r="2.5" pathLength="1"/><path d="M10.6 15.6L10 19l2-1 2 1-.6-3.4" pathLength="1"/></symbol>
-  <symbol id="i-vinculo" viewBox="0 0 24 24"><path d="M10 14l4-4" pathLength="1"/><path d="M8.5 11.5l-2 2a3.2 3.2 0 0 0 4.5 4.5l2-2" pathLength="1"/><path d="M15.5 12.5l2-2A3.2 3.2 0 0 0 13 6l-2 2" pathLength="1"/></symbol>
+  <symbol id="i-lupa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" pathLength="1"/><path d="M15.3 15.3L21 21M8 10.5h5" pathLength="1"/></symbol>
+  <symbol id="i-saldo" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7zM14 3v4h4" pathLength="1"/><path d="M12 10v7M14 11.2c-.4-.6-1.1-.9-2-.9-1.1 0-2 .6-2 1.4 0 1.9 4 1 4 2.9 0 .8-.9 1.4-2 1.4-.9 0-1.7-.4-2.1-1" pathLength="1"/></symbol>
   <symbol id="i-volante" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" pathLength="1"/><circle cx="12" cy="12" r="2" pathLength="1"/><path d="M3.5 10.5l6.5 1M20.5 10.5l-6.5 1M12 14v7" pathLength="1"/></symbol>
   <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H6v18h12V7zM14 3v4h4M9 11h6M9 14.5h6M9 18h4" pathLength="1"/></symbol>
   <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z" pathLength="1"/><path d="M9 12l2 2 4-4" pathLength="1"/></symbol>
@@ -182,16 +184,16 @@
         <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-correo"/></svg><a href="mailto:karemtarazona@gmail.com" data-conv="email" data-loc="contacto"><small>Correo</small><strong>karemtarazona@gmail.com</strong></a><span></span></li>
         <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg><a href="https://www.instagram.com/puentelegaldigital/" target="_blank" rel="noopener"><small>Instagram</small><strong>@puentelegaldigital</strong></a><span></span></li>
       </ul>
-      <details class="proto-note"><summary>Nota · Datos</summary><div>Teléfono, Instagram y correo tomados del membrete. Recomendado: correo con dominio propio y Perfil de Empresa de Google con la ciudad.</div></details>
+      <details class="proto-note"><summary>Nota · Datos</summary><div>Pendiente: la clienta enviará el número de celular y el correo definitivos (por ahora van los del membrete). Recomendado: correo con dominio propio y Perfil de Empresa de Google con la ciudad.</div></details>
     </div>
     <form class="lead" id="form-contacto" data-demo novalidate>
       <div class="field"><label for="f-nombre">Nombre</label><input id="f-nombre" name="nombre" autocomplete="name" enterkeyhint="next" required></div>
       <div class="field"><label for="f-tel">WhatsApp o teléfono</label><input id="f-tel" name="telefono" type="tel" autocomplete="tel" inputmode="tel" enterkeyhint="next" required></div>
       <div class="field"><label for="f-mail">Correo <small>(opcional)</small></label><input id="f-mail" name="correo" type="email" autocomplete="email" enterkeyhint="next"></div>
-      <div class="field"><label for="f-area">¿Con qué te ayudamos?</label><select id="f-area" name="area" required><option value="">Elige un área</option><option>Constitución, estatutos o marca</option><option>SG-SST o PESV</option><option>Laboral: contratos, reglamento o descargos</option><option>Insolvencia o deudas</option><option>Comercio exterior o aduanas</option><option>No sé, quiero orientación</option></select></div>
+      <div class="field"><label for="f-area">¿Con qué te ayudamos?</label><select id="f-area" name="area" required><option value="">Elige un área</option><option>Habilitación de transporte de carga</option><option>Constitución o estatutos</option><option>SG-SST o PESV</option><option>Laboral: contratos, reglamento o descargos</option><option>Insolvencia o deudas</option><option>Cobro de saldos de manifiesto o standby</option><option>Comercio exterior o aduanas</option><option>No sé, quiero orientación</option></select></div>
       <div class="field full"><label for="f-sector">Sector <small>(opcional)</small></label>
         <select id="f-sector" name="sector"><option value="" selected>Elige tu sector</option><option>Transporte de carga terrestre</option><option>Transporte marítimo o logística</option><option>Comercio</option><option>Industria o construcción</option><option>Servicios</option><option>Soy persona natural</option><option>Otro</option></select></div>
-      <div class="field full"><label for="f-msg">Cuéntanos tu caso</label><textarea id="f-msg" name="mensaje" enterkeyhint="send" placeholder="Ej.: quiero crear una SAS con un socio y registrar la marca."></textarea></div>
+      <div class="field full"><label for="f-msg">Cuéntanos tu caso</label><textarea id="f-msg" name="mensaje" enterkeyhint="send" placeholder="Ej.: tengo una SAS y quiero habilitarla para transportar carga."></textarea></div>
       <label class="consent" for="f-ok"><input type="checkbox" id="f-ok" required><span>Autorizo a Puente Legal a tratar mis datos para responder esta solicitud, según su <a href="#">política de tratamiento de datos</a> (Ley 1581 de 2012).</span></label>
       <button class="btn" type="submit">Enviar mi consulta</button>
       <p class="form-ok" role="status" tabindex="-1" hidden>Recibimos tu consulta. Te respondemos el mismo día hábil por WhatsApp o correo. (Modo demostración: el formulario todavía no envía datos.)</p>
@@ -230,6 +232,7 @@
           <li><a href="../servicios/sst-pesv-laboral/">SST, PESV y laboral</a></li>
           <li><a href="../servicios/insolvencia/">Insolvencia</a></li>
           <li><a href="../servicios/comercio-exterior/">Comercio exterior</a></li>
+          <li><a href="../habilitacion-transporte-de-carga/">Cotiza tu habilitación</a></li>
           <li><a href="../transporte-de-carga/">Especialidad: transporte de carga</a></li>
         </ul>
       </nav>

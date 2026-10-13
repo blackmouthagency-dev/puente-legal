@@ -1,4 +1,4 @@
-/* Puente Legal — interacciones del prototipo (v3). Sin dependencias. */
+/* Puente Legal — interacciones del prototipo (v6). Sin dependencias. */
 (function () {
   "use strict";
   var WA = "573223685085";
@@ -697,6 +697,65 @@
     a.href = a.dataset.share === "wa" ? "https://wa.me/?text=" + t + "%20" + u : "https://www.linkedin.com/sharing/share-offsite/?url=" + u;
     a.target = "_blank"; a.rel = "noopener";
   });
+
+  /* ---------- v6 · video de fondo: solo corre en pantalla y nunca con movimiento reducido ---------- */
+  $$("video[data-bg-video]").forEach(function (v) {
+    if (reduce || !("IntersectionObserver" in window)) return;
+    var started = false;
+    new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) {
+        if (!started) { v.preload = "auto"; started = true; }
+        var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+      } else v.pause();
+    }, { threshold: .15 }).observe(v);
+  });
+
+  /* ---------- v6 · ¿En qué punto está tu empresa? (inicio) ---------- */
+  var rbox = $("[data-ruta-box]");
+  if (rbox) {
+    var rsec = rbox.closest("section");
+    var rcta = $("[data-ruta-cta]", rbox), rlab = $("[data-ruta-label]", rsec);
+    var setRuta = function (id, animate) {
+      $$(".ruta-opt", rbox).forEach(function (o) { o.classList.toggle("is-on", $("input", o).value === id); });
+      $$("[data-ruta-list]", rsec).forEach(function (ul) {
+        var on = ul.getAttribute("data-ruta-list") === id;
+        ul.hidden = !on;
+        if (on && animate && !reduce) { ul.classList.remove("swap"); void ul.offsetWidth; ul.classList.add("swap"); }
+      });
+      if (rlab) rlab.textContent = (id === "cero" ? "Empiezo desde cero" : "Ya tengo mi SAS") + " · transporte de carga";
+      if (rcta) rcta.href = rcta.getAttribute("href").replace(/ruta=[a-z]+/, "ruta=" + id);
+    };
+    $$("input[name=ruta-home]", rbox).forEach(function (r) {
+      r.addEventListener("change", function () { setRuta(r.value, true); track({ event: "ruta_habilitacion", ruta: r.value }); });
+    });
+    var rc = $("input[name=ruta-home]:checked", rbox);
+    setRuta(rc ? rc.value : "sas", false);
+  }
+
+  /* ---------- v6 · Cotizador de habilitación ---------- */
+  var cz = document.getElementById("cotizar");
+  if (cz && cz.hasAttribute("data-wa-form")) {
+    var pick = function (id) { var r = $("input[name=ruta][value=" + id + "]", cz); if (r) r.checked = true; };
+    if (/^(sas|cero)$/.test(params.get("ruta") || "")) pick(params.get("ruta"));
+    $$("[data-ruta-go]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        pick(a.getAttribute("data-ruta-go"));
+        cz.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+        var n = document.getElementById("c-nombre"); if (n) setTimeout(function () { n.focus({ preventScroll: true }); }, reduce ? 0 : 500);
+      });
+    });
+    cz.addEventListener("submit", function () {
+      if (!cz.checkValidity()) return;
+      var r = $("input[name=ruta]:checked", cz), val = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; };
+      var msg = "Hola, Puente Legal. Quiero cotizar la habilitación de mi empresa de transporte de carga." +
+        "\nMi caso: " + (r ? r.getAttribute("data-label") : "") +
+        "\nNombre: " + val("c-nombre") + "\nCorreo: " + val("c-mail") + "\nTeléfono: " + val("c-tel");
+      var out = $("[data-wa-out]", cz);
+      if (out) { out.href = waLink(msg); out.target = "_blank"; out.rel = "noopener"; }
+      track({ event: "lead_habilitacion", ruta: r ? r.value : "" });
+    });
+  }
 
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
