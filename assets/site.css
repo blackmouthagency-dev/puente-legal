@@ -1387,3 +1387,8 @@ form.lead { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; background
 .hab-band figcaption span { display: block; max-width: var(--wrap); margin-inline: auto; }
 .svc-tag { margin: 4px 0 -4px; }
 @media (max-width: 960px) { .nav-open .nav-links a.nav-star { display: flex; align-items: center; gap: 10px; } .nav-open .nav-links a.nav-star::before { position: static; order: 2; } }
+
+/* Equipo sin fondo: recortes con transparencia (Magnific), sin recuadro */
+.ted-img, .prof-photo { background: none; border-radius: 0; }
+.ted-img img, .prof-photo img { -webkit-mask-image: linear-gradient(to top, transparent 0, #000 24%); mask-image: linear-gradient(to top, transparent 0, #000 24%); }
+.prof-photo img { object-position: 50% 100%; }
