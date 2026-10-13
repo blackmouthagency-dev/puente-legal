@@ -1393,9 +1393,54 @@ form.lead { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; background
 .ted-img img, .prof-photo img { -webkit-mask-image: linear-gradient(to top, transparent 0, #000 24%); mask-image: linear-gradient(to top, transparent 0, #000 24%); }
 .prof-photo img { object-position: 50% 100%; }
 
-/* Hero: horizonte de oficinas detrás del puente (capa de tinta con transparencia, generada con IA) */
-.hx-city { position: absolute; left: -4%; top: -8.9%; width: 108%; pointer-events: none; opacity: .42; animation: cityIn 1.6s var(--ease-out-expo) .25s both; }
-.hx-city img { display: block; width: 100%; height: auto; }
-@keyframes cityIn { from { opacity: 0; transform: translateY(14px); } }
-.hx-lab { background: rgba(255,255,255,.84); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
-@media (prefers-reduced-motion: reduce) { .hx-city { animation: none; } }
+/* =====================================================================
+   Hero con foto de ciudad a todo el fondo (pedido de la clienta, 2026-10-13)
+   La foto es generada con IA; el puente se dibuja encima en blanco y crema.
+   ===================================================================== */
+.hx { background: var(--negro); color: #fff; }
+.hx-sticky { position: relative; isolation: isolate; }
+.hx-photo { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--negro); }
+.hx-photo img { position: absolute; left: 0; top: 0; width: 100%; height: 112%; object-fit: cover; object-position: 68% 40%; animation: hxPhotoIn 1.8s var(--ease-out-expo) both; }
+@keyframes hxPhotoIn { from { opacity: 0; transform: scale(1.05); } }
+.hx-photo::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(15,15,15,.72) 0%, rgba(15,15,15,.35) 48%, rgba(15,15,15,0) 75%),
+    linear-gradient(180deg, rgba(15,15,15,.6) 0%, rgba(15,15,15,.12) 42%, rgba(15,15,15,.18) 62%, rgba(15,15,15,.78) 100%); }
+.hx-sticky::before { display: none; }
+.hx-cables path { stroke: #fff; opacity: .07; }
+.hx .eyebrow { color: rgba(255,255,255,.72); }
+.hx .eyebrow::before { background: var(--crema); }
+.hx h1 .display { color: #fff; text-shadow: 0 2px 30px rgba(0,0,0,.35); }
+.hx h1 .display em { color: var(--crema); }
+.hx .trazo path { stroke: var(--crema); }
+.hx h1 .kw { color: rgba(255,255,255,.82); }
+.hx .btn:not(.btn-ghost) { --bg: var(--crema); --fg: var(--tinta); --sweep: #FFF09A; }
+.hx .btn-ghost { color: #fff; border-color: rgba(255,255,255,.4); --sweep: #fff; --fg-hover: var(--tinta); background: rgba(15,15,15,.25); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+.hx-hint { color: rgba(255,255,255,.7); }
+.hx-hint i { border-color: rgba(255,255,255,.45); }
+.hx-hint i::after { background: var(--crema); }
+.hx-water { stroke: rgba(255,255,255,.28); }
+.hx-bank { stroke: #fff; }
+.hx-ghost path { stroke: rgba(255,255,255,.3); }
+.hx-pier { stroke: #fff; }
+.hx-deck { stroke: var(--crema); }
+.hx-arch { stroke: #fff; }
+.hx-hang { stroke: #fff; opacity: .55; }
+.hx-portal { stroke: var(--crema); }
+.hx-far path { stroke: rgba(255,255,255,.22); }
+.hx-mid path { stroke: #fff; opacity: .3; }
+.hx-lab { color: #fff; background: rgba(15,15,15,.5); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.hx-lab .i { color: var(--crema); }
+.hx-lab i { color: rgba(255,255,255,.62); }
+.hx-lab small { color: rgba(255,255,255,.7); }
+@media (hover: hover) { .hx-lab:hover b { color: var(--crema); } }
+.hx-bank-l { color: rgba(255,255,255,.75); }
+.hx-bank-r { color: var(--crema); }
+.hx-bank-r::after { background: var(--crema); }
+.hx-trav em { background: var(--crema); color: var(--tinta); }
+.hx-trav i { box-shadow: 0 0 0 5px var(--crema), 0 0 24px 6px rgba(255,247,193,.35); }
+@media (max-width: 860px) {
+  .hx-photo img { object-position: 72% 40%; }
+  .hx-photo::after { background: linear-gradient(180deg, rgba(15,15,15,.78) 0%, rgba(15,15,15,.5) 40%, rgba(15,15,15,.2) 62%, rgba(15,15,15,.8) 100%); }
+}
+@media (prefers-reduced-motion: reduce) { .hx-photo img { animation: none; height: 100%; } }
